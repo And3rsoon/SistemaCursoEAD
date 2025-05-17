@@ -1,0 +1,180 @@
+<div class="father">
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-2">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">EADCursos.com</a>
+      </div>
+
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home <span class="sr-only">(página atual)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#cursos" >Cursos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#planos">Planos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#faq">Duvidas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#avalicao">Avaliação</a>
+        </li>
+      </ul>
+      <div class="botao">
+        <button class="glow-on-hover" type="button" (click)="cadastro()">Cadastrar-se</button>
+        <button class="glow-on-hover" type="button" (click)="entrar()">Entrar</button>
+      </div>
+    </div>
+  </nav>
+    </div>
+
+    <div class="body">
+
+
+        <div class="formFrame">
+
+              <div class="titulo">Cadastro</div>
+
+              <div class="form">
+                        <form (ngSubmit)="cadastrarCliente()" #clienteForm="ngForm" class="form-container">
+                              <div class="form-group">
+                                <label for="nome">Nome</label> 
+                                <input id="nome" name="nome" [(ngModel)]="cliente.nome" [readonly]="true" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input id="email" name="email" type="email" [(ngModel)]="cliente.email" [readonly]="true" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="cpf">CPF</label>
+                                <input id="cpf" name="cpf" [(ngModel)]="cliente.cpf" mask="000.000.000-00" [readonly]="true" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="dataNascimento">Data de Nascimento</label>
+                                <input id="dataNascimento" name="dataNascimento" type="date" [(ngModel)]="cliente.dataNascimento" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input id="telefone" name="telefone" [(ngModel)]="cliente.telefone" mask="(00) 00000-0000" required />
+                              </div>
+
+                              
+                              <div class="form-group">
+                                <label for="cep">CEP</label>
+                                <input id="cep" name="cep" [(ngModel)]="cliente.cep" (blur)="buscarCep()" mask="00000-000" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="rua">Rua</label>
+                                <input id="rua" name="rua" [(ngModel)]="cliente.rua" [readonly]="true" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="bairro">Bairro</label>
+                                <input id="bairro" name="bairro" [(ngModel)]="cliente.bairro" [readonly]="true" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="cidade">Cidade</label>
+                                <input id="cidade" name="cidade" [(ngModel)]="cliente.cidade" [readonly]="true" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="estado">Estado</label>
+                                <input id="estado" name="estado" [(ngModel)]="cliente.estado" [readonly]="true" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="numero">Número</label>
+                                <input id="numero" name="numero" type="text" pattern="[0-9]*" inputmode="numeric" [(ngModel)]="cliente.numero" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="numero">Senha</label>
+                                <input id="numero" name="numero" type="password"  [(ngModel)]="cliente.senha" required />
+                              </div>
+
+                              <div class="form-group">
+                                <label for="numero">Repita a Senha</label>
+                                <input id="numero" name="numero" type="password"  [(ngModel)]="cliente.confirmSenha" required />
+                              </div>
+
+                              <!-- Mensagem de validação -->
+                              <div *ngIf="cliente.confirmSenha" class="form-group">
+                                <span *ngIf="cliente.senha !== cliente.confirmSenha" class="senha-erro">
+                                  As senhas não coincidem.
+                                </span>
+                                <span *ngIf="cliente.senha === cliente.confirmSenha" class="senha-sucesso">
+                                  As senhas coincidem.
+                                </span>
+                              </div>
+
+                               <div class="form-group">
+                                <label for="plano">Plano</label>
+                                <select id="plano" name="plano" [(ngModel)]="cliente.plano" required>
+                                  <option *ngFor="let plano of planos | keyvalue" [value]="plano.key">
+                                    {{ plano.key }} - R$ {{ plano.value.valor }} / {{ plano.value.duracao }} dias
+                                  </option>
+                                </select>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="formaPagamento">Forma de Pagamento</label>
+                                <select id="formaPagamento" name="formaPagamento" [(ngModel)]="cliente.formaPagamento" required>
+                                  <option *ngFor="let forma of formasPagamento" class="form-group" [value]="forma">{{ forma }}</option>
+                                </select>
+                              </div>
+
+                            <!-- Exibe a seção de cartão se for Crédito ou Débito -->
+                              <div *ngIf="cliente.formaPagamento === 'Crédito' || cliente.formaPagamento === 'Débito'" class="cartao-section">
+                                <!-- Exibe seletor de parcelas apenas se for Crédito -->
+                                <div *ngIf="cliente.formaPagamento === 'Crédito'" class="form-group">
+                                  <label for="parcelas">Parcelas</label>
+                                  <select id="parcelas" name="parcelas" [(ngModel)]="cliente.parcelas" (ngModelChange)="verificarFormaPagamento()">
+                                    <option *ngFor="let p of parcelas" [value]="p">{{ p }}x</option>
+                                  </select>
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="nomeTitular">Nome do Titular</label>
+                                  <input id="nomeTitular" name="nomeTitular" [(ngModel)]="cliente.nomeTitular" />
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="numeroCartao">Número do Cartão</label>
+                                  <input id="numeroCartao" name="numeroCartao" [(ngModel)]="cliente.numeroCartao" />
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="codSeguranca">Código de Segurança</label>
+                                  <input id="codSeguranca" name="codSeguranca" [(ngModel)]="cliente.codSeguranca" />
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="validade">Validade</label>
+                                  <input id="validade" name="validade" type="month" [(ngModel)]="cliente.validade" />
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="cpfTitular">CPF do Titular</label>
+                                  <input id="cpfTitular" name="cpfTitular" [(ngModel)]="cliente.cpfTitular" />
+                                </div>
+                              </div>
+
+                              <!-- Se for Boleto, mostra mensagem -->
+                              <div *ngIf="cliente.formaPagamento === 'Boleto'" class="boleto-msg">
+                                A compensação do boleto pode demorar até 2 dias úteis, avisaremos quando sua matrícula for efetivada!
+                              </div>
+                            
+                              <button type="submit" class="submit_btn">Cadastrar</button>           
+              </form>
+          </div>  
+    </div>
+</div>

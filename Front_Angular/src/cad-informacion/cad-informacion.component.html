@@ -1,0 +1,21 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <label>
+        <input type="checkbox" formControlName="geral" (change)="toggleGeral()" /> Geral
+      </label><br />
+      
+      <label for="idMateria">Aula</label><br>
+      <select id="idMateria" formControlName="idMateria" class="user_input" [disabled]="formulario.get('geral')?.value">
+        <option *ngFor="let materia of materias" [value]="materia.id_materia">{{ materia.nome }}</option>
+      </select><br>
+  
+    <label for="dataInicio" class="user_lable">Data Início</label><br />
+    <input id="dataInicio" type="date" formControlName="dataInicio" class="user_input" /><br />
+  
+    <label for="dataTermino" class="user_lable">Data Término</label><br />
+    <input id="dataTermino" type="date" formControlName="dataTermino" class="user_input" /><br />
+  
+    <label for="aviso" class="user_lable">Aviso</label><br />
+    <input id="aviso" type="text" formControlName="aviso" class="user_input" /><br />
+  
+    <button class="botao" type="submit" [disabled]="!formulario.valid">Cadastrar</button>
+  </form>

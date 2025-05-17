@@ -1,0 +1,22 @@
+.mensagem-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.mensagem-container:hover {
+  background-color: #f5f5f5;
+}
+
+.icone-status {
+  font-size: 24px;
+  margin-top: 5px;
+}
+
+.conteudo-msg {
+  flex: 1;
+}

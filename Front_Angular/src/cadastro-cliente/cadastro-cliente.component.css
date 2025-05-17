@@ -1,0 +1,204 @@
+/* cadastro.component.css */
+
+.navbar-brand{
+  font-family: fantasy;
+  font-size: 30px;
+}
+
+.botao{display: flex;
+}
+.glow-on-hover {
+    width: 150px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #080000;
+    background: #fffefe;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    box-shadow: #050404;
+    font-size: 25px;
+    font-family: fantasy;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    
+}
+
+.glow-on-hover:active {
+    color: #fcfafa
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f8f6f6;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+
+.father{
+    display: block;
+    height: 100vh;
+    
+}
+
+.header{
+    display: flex;
+    height: 10%;
+}
+
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    padding-top: 100px;
+
+
+}
+
+.cadastro-container {
+    flex: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  font-family: sans-serif;
+
+}
+
+.ilustracao {
+  flex: 60%;
+  text-align: center;
+  
+}
+
+.ilustracao img {
+  max-width: 60%;
+  min-width: 50%;
+}
+
+.formulario {
+  flex: 1;
+  max-width: 400px;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+form input[type="text"],
+form input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.btn-email {
+  width: 100%;
+  background-color: #a435f0;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.divider span {
+  padding: 0 10px;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.botoes-sociais {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.botoes-sociais button {
+  flex: 1;
+  padding: 12px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+}
+
+.termos,
+.login {
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;
+}
+
+.login a,
+.termos a {
+  color: #5624d0;
+  text-decoration: none;
+}

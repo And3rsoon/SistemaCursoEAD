@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="assets/LogoEADCursos_MudeSeuFuturo.png" alt="" width="50" height="30" class="d-inline-block align-text-top">
+          Bootstrap
+        </a>
+      </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home <span class="sr-only">(página atual)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#cursos" >Cursos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#planos">Planos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#faq">Duvidas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#avalicao">Avaliação</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Entrar</button>
+      </form>
+    </div>
+  </nav>
+
+
+
+<div class="layout">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="header">
+      <strong>Categorias</strong>
+      <button class="toggle">&#9660;</button>
+    </div>
+    
+    <ul class="lista-categorias">
+      <li *ngFor="let categoria of categorias">
+        <span class="icone">&#8250;</span> {{ categoria.nome }}
+        <span class="contador">{{ categoria.quantidade }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Container de Cursos -->
+  <div class="container">
+    <h2>Esta categoria tem {{ cursos.length }} cursos disponíveis <strong>grátis!</strong></h2>
+
+    <div class="grid">
+      <div class="card" *ngFor="let curso of cursos">
+        <img [src]="curso.imagem" alt="{{ curso.nome }}" />
+
+        <div class="horario">{{ curso.horario }}</div>
+
+        <h3>{{ curso.nome }}</h3>
+
+        <div class="avaliacao">
+          <span *ngFor="let star of [].constructor(curso.estrelas)">⭐</span>
+        </div>
+
+        <button class="btn-acesso">{{ curso.acesso }}</button>
+      </div>
+    </div>
+  </div>
+</div>

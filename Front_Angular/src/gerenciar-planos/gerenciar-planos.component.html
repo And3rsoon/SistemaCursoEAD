@@ -1,0 +1,38 @@
+<h2>Planos Ativos</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Duração (dias)</th>
+      <th>Valor (R$)</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let plano of planos">
+      <td *ngIf="editandoId !== plano.idPlano">{{ plano.tipo }}</td>
+      <td *ngIf="editandoId === plano.idPlano">
+        <input type="text" formControlName="tipo" />
+      </td>
+
+      <td *ngIf="editandoId !== plano.idPlano">{{ plano.duracao }}</td>
+      <td *ngIf="editandoId === plano.idPlano">
+        <input type="number" formControlName="duracao" />
+      </td>
+
+      <td *ngIf="editandoId !== plano.idPlano">{{ plano.valor }}</td>
+      <td *ngIf="editandoId === plano.idPlano">
+        <input type="number" step="0.01" formControlName="valor" />
+      </td>
+
+      <td>
+        <button *ngIf="editandoId !== plano.idPlano" (click)="ativarEdicao(plano)">Editar</button>
+        <button *ngIf="editandoId === plano.idPlano" (click)="atualizarPlano()">Salvar</button>
+        <button *ngIf="editandoId === plano.idPlano" (click)="cancelarEdicao()">Cancelar</button>
+        <button (click)="excluirPlano(plano.idPlano)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

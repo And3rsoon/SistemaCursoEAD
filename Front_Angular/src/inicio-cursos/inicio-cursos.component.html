@@ -1,0 +1,76 @@
+<div class="pai">
+    <div class="menubar">
+        <span>{{user}}/a  -  {{name}}, Bem Vindo!</span>
+        <span>{{currentDateTime}} <span id="datetime"></span></span>
+        <button type="button" (click)="logOut()">Sair</button>
+    </div>
+
+<div style="display: flex; height: 100vh">
+  
+  <div style="flex: 30%; background-color: #d0d5d6; padding: 10px;">
+    <div class="progress-bar-container">
+      <div class="progress-bar" [style.width.%]="porcentagem">
+        {{ porcentagem }}%
+      </div>
+    </div>
+    <div *ngFor="let atividade of atividades;index as x">
+      <span>{{x}} - {{atividade.conteudo.descricao}} - {{atividade.conteudo.tipo}}</span>
+      <button *ngIf="atividade.status === 'pendente'" 
+              style="background-color: green; color: white; margin-left: 10px;" 
+              (click)="iniciarAtividade(atividade)">Iniciar</button>
+      <button *ngIf="atividade.status === 'concluida'" disabled style="background-color: grey; color: white; margin-left: 10px;">Finalizada</button>
+    </div>
+  </div>
+  <div style="flex: 50%; background-color: #c8aaff; padding: 10px;">
+    <ng-container *ngIf="conteudoSelecionado">
+  <h3>{{conteudoSelecionado.descricao}}</h3>
+  <p>Tipo: {{conteudoSelecionado.tipo}}</p>
+
+  <!-- Vídeo -->
+  <div *ngIf="conteudoSelecionado.tipo === 'vídeo'">
+          <iframe 
+            width="100%" 
+            height="480px" 
+            [src]="safeUrl" 
+            frameborder="0" 
+            allowfullscreen
+            (load)="finalizarAposLeitura()">
+          </iframe>
+  </div>
+
+  <!-- PDF -->
+  <div *ngIf="conteudoSelecionado.tipo === 'pdf'">
+    <p>PDF carregando... ao abrir será marcado como concluído.</p>
+    
+    <iframe [src]="safeUrl" width="100%" height="600px" style="border:none;" (load)="finalizarAposLeitura()"></iframe>
+
+    
+  </div>
+
+  <!-- Atividade -->
+  <div *ngIf="conteudoSelecionado.tipo === 'texto'">
+    <form (ngSubmit)="enviarResposta()">
+      <p>{{conteudoSelecionado.descricao}}</p>
+      <label for="resposta">Sua Resposta:</label><br>
+      <textarea id="resposta" [(ngModel)]="respostaAtividade" name="resposta" rows="5" cols="50" required></textarea><br><br>
+      <button type="submit">Enviar Resposta</button>
+    </form>
+  </div>
+</ng-container>
+  </div>
+
+  <div style="flex: 20%;height: 85%;">
+      <div><h4>Chat Online</h4></div>
+      <div class="chat-container">
+            <div id="mensagens">
+              <p *ngFor="let msg of mensagens">
+                <strong>{{msg.idUsuarioRemetente}}:</strong> {{ msg.mensagem }}
+              </p>
+            </div>
+
+            <input [(ngModel)]="mensagem" placeholder="Digite aqui..." />
+            <button (click)="enviar()">Enviar</button>
+      </div>
+  </div>
+  </div>
+</div>

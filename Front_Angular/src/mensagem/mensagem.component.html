@@ -1,0 +1,21 @@
+<div>
+  <h2>Enviar Mensagem</h2>
+
+  <label>Curso:</label>
+  <select [(ngModel)]="idCurso">
+    <option *ngFor="let curso of cursos" [value]="curso.idCursos">{{ curso.nome }}</option>
+  </select>
+
+  <label>Destinatário:</label>
+  <select [(ngModel)]="destinatario">
+    <option value="aluno">Aluno</option>
+    <option value="professor" *ngIf="userRole === 'Administrador'">Professor</option>
+    <option value="administrador" *ngIf="userRole !== 'Administrador'">Administrador</option>
+    <option value="ambos" *ngIf="userRole === 'Administrador'">Ambos</option>
+  </select>
+
+  <label>Mensagem:</label>
+  <textarea [(ngModel)]="mensagem"></textarea>
+
+  <button (click)="enviarMensagem()">Enviar</button>
+</div>

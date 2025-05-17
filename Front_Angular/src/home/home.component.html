@@ -1,0 +1,37 @@
+<div class="pai">
+    
+    
+    <div class="menubar">
+        <span>{{user}}/a  -  {{name}}, Bem Vindo!</span>
+        <span>{{currentDateTime}} <span id="datetime"></span></span>
+        <button type="button" (click)="logOut()">Sair</button>
+    </div>
+    <div class="center">
+            <div class="sidebar">
+                <div class="btn-group" *ngFor="let categoria of getCategorias(); index as i">
+                    <button
+                      type="button"
+                      class="btn btn-secondary dropdown-toggle"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false">
+                      {{ categoria }}
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <button
+                        class="dropdown-item"
+                        *ngFor="let acao of getAcoes(categoria)"
+                        (click)="executarAcao(categoria, acao)">
+                        {{ acao }}
+                      </button>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="content">   
+                    <div #container></div>
+            </div>
+    </div>
+    
+    
+</div>

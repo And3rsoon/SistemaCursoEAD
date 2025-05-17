@@ -1,0 +1,34 @@
+<h2>Cadastrar Conteúdo</h2>
+
+<form [formGroup]="formulario" (ngSubmit)="cadastrarConteudo()">
+
+  <label for="curso">Curso:</label>
+  <select id="curso" formControlName="idCursos">
+    <option value="">Selecione um curso</option>
+    <option *ngFor="let curso of cursos" [value]="curso.idCursos">{{ curso.nome }}</option>
+  </select>
+  <br><br>
+
+  <label for="descricao">Descrição:</label>
+  <input id="descricao" type="text" formControlName="descricao" />
+  <br><br>
+
+  <label for="tipo">Tipo de Conteúdo:</label>
+  <select id="tipo" formControlName="tipo">
+    <option value="">Selecione o tipo</option>
+    <option value="texto">Texto</option>
+    <option value="pdf">PDF</option>
+    <option value="vídeo">Vídeo</option>
+  </select>
+  <br><br>
+
+  <label for="urlConteudo">URL do Conteúdo:</label>
+  <input id="urlConteudo" type="text" formControlName="urlConteudo" />
+  <br><br>
+
+  <label for="cargaHoraria">Carga Horária (em horas):</label>
+  <input id="cargaHoraria" type="number" formControlName="cargaHoraria" />
+  <br><br>
+
+  <button type="submit" [disabled]="formulario.invalid">Cadastrar Conteúdo</button>
+</form>

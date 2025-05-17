@@ -1,0 +1,40 @@
+<h2>Cadastrar Curso</h2>
+
+<form [formGroup]="formulario" (ngSubmit)="cadastrarCurso()">
+
+  <label for="area">Área:</label>
+  <select id="area" formControlName="idAreaCursos" (change)="buscarSubareas()">
+    <option value="">Selecione uma área</option>
+    <option *ngFor="let area of areas" [value]="area.idAreaCursos">{{ area.nome }}</option>
+  </select>
+
+  <br><br>
+
+  <label for="subarea">Subárea:</label>
+  <select id="subarea" formControlName="idSubArea">
+    <option value="">Selecione uma subárea</option>
+    <option *ngFor="let sub of subareas" [value]="sub.idSubAreas">{{ sub.nome }}</option>
+  </select>
+
+  <br><br>
+
+  <label for="nome">Nome do Curso:</label>
+  <input id="nome" type="text" formControlName="nome" />
+
+  <br><br>
+
+  <label for="cargaHoraria">Carga Horária:</label>
+  <input id="cargaHoraria" type="number" formControlName="cargaHoraria" />
+
+  <br><br>
+
+  <label for="idUsuario">Professor Responsável:</label>
+  <select id="idUsuario" formControlName="idUsuario">
+    <option value="">Selecione um professor</option>
+    <option *ngFor="let prof of professores" [value]="prof.idUsuario">{{ prof.nome }}</option>
+  </select>
+
+  <br><br>
+
+  <button type="submit" [disabled]="formulario.invalid">Cadastrar Curso</button>
+</form>

@@ -1,0 +1,17 @@
+<div><h4>Caixa Mensagens</h4></div>
+<div *ngIf="mensagens.length === 0; else temMensagens">
+  <h3>Sem Mensagens!</h3>
+</div>
+<ng-template #temMensagens>
+<div class="mensagem-container" *ngFor="let msg of mensagens" (click)="marcarComoLida(msg)">
+  <div class="icone-status">
+    <span *ngIf="msg.status === 'pendente'">📩</span>
+    <span *ngIf="msg.status === 'lida'">✅</span>
+  </div>
+  <div class="conteudo-msg">
+    <strong>Curso: </strong> {{ msg.idCurso }}<br>
+    <strong>Mensagem: </strong> {{ msg.mensagem }}<br>
+    <small>{{ msg.data | date:'short' }}</small>
+  </div>
+</div>
+</ng-template>

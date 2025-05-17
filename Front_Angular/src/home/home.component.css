@@ -1,0 +1,125 @@
+p{
+font-size: 30px;
+
+}
+
+button{
+        height: 30px;
+        width: 100px;
+        border-radius: 5px;
+}
+
+.pai{
+    size: 100%;
+    height: 100%;
+    width: 100%;
+    background-color: #222;
+    display: block;
+    box-sizing: border-box;
+}
+
+.menubar {
+    grid-area: menubar;
+    background: #333;
+    color: white;
+    display:flex;
+    top:0;
+    position: sticky;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    height: 5%;
+    box-sizing: border-box;
+    
+}
+
+.center{
+    height: 95%;
+    width: 100%;
+    background-color: rgb(0, 255, 76);
+    display: flex;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background: #444;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 20%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.sidebar button {
+    padding: 10px;
+    background: #555;
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+
+.content {
+    grid-area: content;
+    padding: 20px;
+    background: #f4f4f4;
+    width: 80%;
+    height: 100%;
+    box-sizing: border-box;
+
+}
+
+.bottombar {
+    grid-area: bottombar;
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    height: 10%;
+    
+}
+
+div[class*=box] {
+    height: 33.33%;
+    width: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+ 
+  .btn {
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    justify-content: center;
+    width: 250px;
+    cursor: pointer;
+    margin: 0;
+  padding: 0;
+  }
+  
+
+ .dropdown-menu{
+    margin: 0;
+    padding: 0;
+ } 
+
+.dropdown-menu .dropdown-item {
+  width: 100%;
+  height: 100%;           /* Preenche toda a largura */
+  box-sizing: border-box;
+  text-align: center;    /* Centraliza o texto, se desejar */
+}
+
+ .dropdown-menu .dropdown-item:hover{
+    background-color:blueviolet ;
+ } 

@@ -1,0 +1,19 @@
+<div class="pai">
+    <div class="quadro_login">
+        <div><p class="nomelogin">Cadastro Aluno</p></div>
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <label for="nome" [ngClass]="'user_lable'">Nome Completo</label><br><input id="nome" type="text" formControlName="nome" class="user_input"/><br>
+                <div><p *ngIf="formulario.get('nome')?.invalid && formulario.get('nome')?.touched" [ngClass]="'aviso'">Digite o nome completo!</p></div>
+            <label for="idade" [ngClass]="'user_lable'">Idade</label><br><input id="idade" type="text" formControlName="idade" class="user_input"/><br>
+            <label for="user" [ngClass]="'user_lable'">Username</label><br><input id="user" type="text" formControlName="user" class="user_input"/><br>
+                <div><p *ngIf="formulario.get('user')?.invalid && formulario.get('user')?.touched" [ngClass]="'aviso'">Usuário deve ter 8 dígitos!</p></div>
+            <label for="password" [ngClass]="'password_lable'">Senha</label><br><input id="password" type="password" formControlName="password" class="senha_input"  required/><br>
+            <div><p *ngIf="formulario.get('password')?.invalid && formulario.get('password')?.touched" [ngClass]="'aviso'">A senha deve ter 8 dígitos!</p></div>
+            <label for="curso" [ngClass]="'user_lable'">Curso</label><br>
+            <select id="curso" formControlName="curso_id" class="user_input">
+                 <option *ngFor="let curso of cursos" [value]="curso.id_curso">{{ curso.nome }}</option>
+            </select><br>
+            <button class="botao" type="submit" [disabled]="!formulario.valid">Cadastrar</button> 
+        </form>
+    </div>  
+</div>

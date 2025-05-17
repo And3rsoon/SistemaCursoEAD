@@ -1,0 +1,67 @@
+<div class="pai">
+  <div><p class="nomelogin">Cadastro Funcionario</p></div>
+  <div class="quadro_login">
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      
+      <label for="nome" [ngClass]="'user_lable'">Nome Completo</label><br>
+      <input id="nome" type="text" formControlName="nome" class="user_input"/><br>
+      <div>
+        <p *ngIf="formulario.get('nome')?.invalid && formulario.get('nome')?.touched" [ngClass]="'aviso'">
+          Digite o nome completo!
+        </p>
+      </div>
+
+      <label for="dataNascimento" [ngClass]="'user_lable'">Data Nascimento</label><br>
+      <input id="dataNascimento" type="date" formControlName="dataNascimento" class="user_input"/><br>
+
+      <label for="cpf" [ngClass]="'user_lable'">CPF</label><br>
+      <input id="cpf" type="text" formControlName="cpf" class="user_input"/><br>
+      <div>
+        <p *ngIf="formulario.get('cpf')?.invalid && formulario.get('cpf')?.touched" [ngClass]="'aviso'">
+          CPF deve ter 11 dígitos!
+        </p>
+      </div>
+
+      <label for="senha" [ngClass]="'password_lable'">Senha</label><br>
+      <input id="senha" type="password" formControlName="senha" class="senha_input" required/><br>
+      <div>
+        <p *ngIf="formulario.get('senha')?.invalid && formulario.get('senha')?.touched" [ngClass]="'aviso'">
+          A senha deve ter 8 dígitos!
+        </p>
+      </div>
+
+      <label for="role" [ngClass]="'user_lable'">Cargo</label><br>
+      <select id="role" formControlName="role" class="user_input">
+        <option value="professor">Professor</option>
+        <option value="Administrador">Administrador</option>
+      </select><br>
+
+      <label for="email" [ngClass]="'user_lable'">Email</label><br>
+      <input id="email" type="email" formControlName="email" class="user_input"/><br>
+      <div>
+        <p *ngIf="formulario.get('email')?.invalid && formulario.get('email')?.touched" [ngClass]="'aviso'">
+          Informe um email válido!
+        </p>
+      </div>
+
+      <label for="telefone" [ngClass]="'user_lable'">Telefone</label><br>
+      <input id="telefone" type="text" formControlName="telefone" class="user_input" readonly /><br>
+
+      <label for="cep" [ngClass]="'user_lable'">CEP</label><br>
+      <input id="cep" type="text" formControlName="cep" class="user_input" (blur)="buscarEndereco()" /><br>
+
+      <label for="estado" [ngClass]="'user_lable'">Estado</label><br>
+      <input id="estado" type="text" formControlName="estado" class="user_input" readonly /><br>
+
+      <label for="cidade" [ngClass]="'user_lable'">Cidade</label><br>
+      <input id="cidade" type="text" formControlName="cidade" class="user_input" readonly /><br>
+
+      <label for="bairro" [ngClass]="'user_lable'">Bairro</label><br>
+      <input id="bairro" type="text" formControlName="bairro" class="user_input" readonly /><br>
+
+      <input id="status" type="hidden" formControlName="status" value="ativo"/>
+
+      <button class="botao" type="submit" [disabled]="!formulario.valid">Cadastrar</button> 
+    </form>
+  </div>  
+</div>

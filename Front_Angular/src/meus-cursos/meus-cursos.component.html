@@ -1,0 +1,16 @@
+<div class="cards-container">
+  <div *ngFor="let curso of cursosMatriculados" class="card">
+    <h3>{{ curso.nomeCurso }}</h3>
+    <p><strong>Área:</strong> {{ curso.nomeArea }}</p>
+    <p><strong>Subárea:</strong> {{ curso.nomeSubArea }}</p>
+    <p><strong>Carga Horária:</strong> {{ curso.cargaHoraria }}h</p>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar" [style.width.%]="curso.porcentagem">
+        {{ curso.porcentagem }}%
+      </div>
+    </div>
+
+    <button (click)="continuarCurso(curso.idCursosMatriculado)">Continuar</button>
+  </div>
+</div>

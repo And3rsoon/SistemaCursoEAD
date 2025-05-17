@@ -1,0 +1,6 @@
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+  <label for="nome">Nome da Área:</label>
+  <input id="nome" formControlName="nome" />
+  
+  <button type="submit" [disabled]="formulario.invalid">Adicionar Área</button>
+</form>

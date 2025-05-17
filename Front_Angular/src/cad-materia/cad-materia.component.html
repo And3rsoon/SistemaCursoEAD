@@ -1,0 +1,28 @@
+<div class="pai">
+    <div class="quadro_login">
+        <div><p class="nomelogin">Cadastro Matéria</p></div>
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <label for="nome" [ngClass]="'user_lable'">Nome Matéria</label><br>
+            <input id="nome" type="text" formControlName="nome" class="user_input"/><br>
+            <div><p *ngIf="formulario.get('nome')?.invalid && formulario.get('nome')?.touched" class="aviso">
+                Digite o nome completo!
+              </p></div>
+
+              <label for="idCurso" [ngClass]="'user_lable'">Curso</label><br>
+              <input id="idCurso" type="text" formControlName="idCurso" class="user_input"/><br>
+            
+            <label for="cargaHoraria" [ngClass]="'user_lable'">Carga Horária</label><br>
+            <input id="cargaHoraria" type="text" formControlName="cargaHoraria" class="user_input"/><br>
+            
+            <label for="semestre" [ngClass]="'user_lable'">Semestre</label><br>
+            <input id="semestre" type="text" formControlName="semestre" class="user_input"/><br>
+            
+            <label for="conteudo" [ngClass]="'user_lable'">Conteúdo</label><br>
+            <input id="conteudo" type="text" formControlName="conteudo" class="user_input"/><br>
+            <div><p *ngIf="formulario.get('user')?.invalid && formulario.get('user')?.touched" [ngClass]="'aviso'">Usuário deve ter 8 dígitos!</p></div>
+                  
+            <button class="botao" type="submit" [disabled]="!formulario.valid">Cadastrar</button>
+               
+        </form>
+    </div>  
+</div>

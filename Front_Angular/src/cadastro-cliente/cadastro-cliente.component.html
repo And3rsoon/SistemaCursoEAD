@@ -1,0 +1,83 @@
+<div class="father">
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top py-2">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">EADCursos.com</a>
+      </div>
+
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home <span class="sr-only">(página atual)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#cursos" >Cursos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#planos">Planos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#faq">Duvidas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#avalicao">Avaliação</a>
+        </li>
+      </ul>
+      <div class="botao">
+        <button class="glow-on-hover" type="button" (click)="cadastro()">Cadastrar-se</button>
+        <button class="glow-on-hover" type="button" (click)="entrar()">Entrar</button>
+      </div>
+    </div>
+  </nav>
+          </div>
+
+    <div class="body">
+          <!-- cadastro.component.html -->
+
+              <div class="ilustracao">
+                  <img src="assets/pngegg (1).png" alt="Ilustração de cadastro" />
+                </div>
+              <div class="cadastro-container">
+                <div class="formulario">
+                  <h2>Cadastrar-se</h2>
+
+                 <form #form="ngForm" (ngSubmit)="cadastrar(form)">
+                    <input type="text" placeholder="Nome completo" [(ngModel)]="nome" name="nome" required />
+                    <input type="text" placeholder="CPF" [(ngModel)]="cpf" name="cpf" required />
+                    <input type="email" placeholder="e-mail" [(ngModel)]="email" name="email" required />
+
+                    <p *ngIf="mensagemErro" style="color: red;">{{ mensagemErro }}</p>
+
+                    <label class="checkbox-container">
+                      <input type="checkbox" [(ngModel)]="ofertas" name="ofertas" />
+                      Quero receber ofertas especiais, recomendações personalizadas e dicas de aprendizado.
+                    </label>
+
+                    <button type="submit" class="btn-email">
+                      📧 Continuar
+                    </button>
+                  </form>
+
+                  <div class="divider">
+                    <hr />
+                    <span>Outras opções de inscrição</span>
+                    <hr />
+                  </div>
+
+                  <div class="botoes-sociais">
+                    <button class="btn-google">G</button>
+                    <button class="btn-facebook">f</button>
+                  </div>
+
+                  <p class="termos">
+                    Ao se inscrever, você concorda com nossos <a href="#">Termos de Uso</a> e com a
+                    <a href="#">Política de Privacidade</a>.
+                  </p>
+
+                  <p class="login">
+                    Já tem uma conta? <a (href)="entrar()">Fazer login</a>
+                  </p>
+                </div>
+              </div>
+        </div>
+</div>

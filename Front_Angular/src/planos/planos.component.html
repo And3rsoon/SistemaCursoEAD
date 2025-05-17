@@ -1,0 +1,23 @@
+<div class="pai">
+  <div class="quadro_login">
+    <div><p class="nomelogin">Cadastro Planos</p></div>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      
+      <label for="tipo" [ngClass]="'user_lable'">Tipo:</label><br>
+      <input id="tipo" type="text" formControlName="tipo" class="user_input"/><br>
+      <div>
+        <p *ngIf="formulario.get('nome')?.invalid && formulario.get('nome')?.touched" [ngClass]="'aviso'">
+          Digite o nome completo!
+        </p>
+      </div>
+
+      <label for="duracao" [ngClass]="'user_lable'">Duração:</label><br>
+      <input id="duracao" type="text" formControlName="duracao" class="user_input"/><br>
+
+      <label for="valor" [ngClass]="'user_lable'">Valor</label><br>
+      <input id="valor" type="number" formControlName="valor" class="user_input"/><br>
+      
+      <button class="botao" type="submit" [disabled]="!formulario.valid">Cadastrar</button> 
+    </form>
+  </div>  
+</div>

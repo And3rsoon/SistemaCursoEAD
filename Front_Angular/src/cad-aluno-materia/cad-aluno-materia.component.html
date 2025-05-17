@@ -1,0 +1,9 @@
+<h2>Cursos Disponíveis</h2>
+
+<div *ngFor="let curso of cursos" class="card">
+  <h3>{{ curso.nome }}</h3>
+  <p><strong>Área:</strong> {{ curso.area }}</p>
+  <p><strong>Subárea:</strong> {{ curso.subarea }}</p>
+  <p><strong>Carga Horária:</strong> {{ curso.cargaHoraria }} horas</p>
+  <button (click)="matricular(curso.idCursos)">Matricule-se</button>
+</div>
