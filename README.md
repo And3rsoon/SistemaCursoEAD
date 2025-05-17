@@ -1,6 +1,11 @@
 # SistemaCursoEAD
 Sistema para cursos EAD construido com Node,Angular,Websocket
 
+Principais Caractéristicas
+1 - Criptocrafia de senha usando senha
+2 - criação de token jwt usando chave privada/pública para verificar permissão e enviado no Authorization do http 
+3 - Servidor Websocket.Io para a criação do chat online
+
 
 ![image](https://github.com/user-attachments/assets/08510bb4-621a-4b76-9e5e-0eb6318117e8)
 
