@@ -7,6 +7,8 @@ Principais Caractéristicas
 3 - Servidor Websocket.Io para a criação do chat online
 
 
+![image](https://github.com/user-attachments/assets/63287136-c5e2-4684-9453-1e2c844c7bdf)
+
 ![image](https://github.com/user-attachments/assets/08510bb4-621a-4b76-9e5e-0eb6318117e8)
 
 ![image](https://github.com/user-attachments/assets/684e0102-77e9-4a56-941b-b16945f339d6)
